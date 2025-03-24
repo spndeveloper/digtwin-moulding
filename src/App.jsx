@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { Navigation } from "./components/Navigation";
 import { UI } from "./components/UI";
 import { useState } from "react";
 
@@ -19,6 +20,7 @@ function App() {
           </EffectComposer>
       </Canvas>
       {/* <UI selectedMode={selectedMode} setSelectedMode={setSelectedMode} /> */}
+      <Navigation />
     </>
   );
 }

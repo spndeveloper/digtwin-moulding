@@ -11,12 +11,6 @@ import adapterFetch from 'alova/fetch';
 import useMqtt from "./Mqtt"
 import mqtt from 'mqtt';
 
-// Buat instance alova
-const alovaInstance = createAlova({
-    requestAdapter: adapterFetch(),
-    responded: response => response.json()
-  });
-
 export const Floor = ({ selectedMode }) => {
     
       const toggleCard = (id) => {
@@ -49,14 +43,10 @@ export const Floor = ({ selectedMode }) => {
         client.on('message', (topic, message) => {
             console.log(`Received message: ${message.toString()} on topic: ${topic}`);
 
-            // Proses pesan MQTT
             try {
-                // const payload = JSON.parse(message.toString()); // Parse pesan JSON
-                // const { machine_id, status } = payload; // Ambil machine_id dan status
                 const strMessage = message.toString();
                 const machineName = topic.split("/").pop();
 
-                console.log("😎", strMessage,machineName);
                 setMachineData((prevData) =>
                     prevData.map((m) =>
                         m.machine_name === machineName
@@ -65,43 +55,16 @@ export const Floor = ({ selectedMode }) => {
                     )
                 );
                 
-
-                // Perbarui machineData berdasarkan machine_id
-                // setMachineData((prevData) =>
-                //     prevData.map((machine) =>
-                //         machine.machine_id === machine_id
-                //             ? { ...machine, machine_status: status } // Perbarui status
-                //             : machine
-                //     )
-                // );
             } catch (error) {
                 console.error("Error parsing MQTT message:", error);
             }
         });
 
-        // Bersihkan koneksi MQTT saat komponen unmount
         return () => {
             client.end();
         };
     }, []);
      
-
-    //   const client = mqtt.connect('ws://192.168.88.62:9001/mqtt');
-      
-    //   client.on('connect', () => {
-    //       console.log('Connected to MQTT broker');
-    //       client.subscribe('1/#', (err) => {
-    //           if (!err) {
-    //               console.log('Subscribed to topic 1/#');
-    //           } else {
-    //               console.error('Failed to subscribe:', err);
-    //           }
-    //       });
-    //   });
-      
-    //   client.on('message', (topic, message) => {
-    //       console.log(`Received message: ${message.toString()} on topic: ${topic}`);
-    //   });
 
 
     const [machineData, setMachineData] = useState([
@@ -203,7 +166,7 @@ export const Floor = ({ selectedMode }) => {
         },
         {
             machine_id: 13,
-            machine_name: "MACHINE 3",
+            machine_name: "MACHINE 13",
             position: [-0.4, 0, -6.5],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
@@ -346,49 +309,6 @@ export const Floor = ({ selectedMode }) => {
             show_card: false,
         }
     ])
-
-    // const { message, topic } = useMqtt(`ws://192.168.88.62:9001/mqtt`, `MACHINE 1`);
-
-    // useEffect(() => {
-    //     if (message && topic) {
-    //         const machineName = topic.split("/").pop(); // Ambil nama mesin dari topik
-    //         setMachineData((prevData) =>
-    //             prevData.map((m) =>
-    //                 m.machine_name === machineName
-    //                     ? { ...m, machine_status: message }
-    //                     : m
-    //             )
-    //         );
-    //         console.log("💨", {message:message, topic:topic});
-            
-    //     }
-    // }, [message, topic]);
-
-    // const { message, topic } = useMqtt(`ws://192.168.88.62:9001/mqtt`, `1/#`);
-
-    // useEffect(() => {
-    //     if (message && topic) {
-    //         console.log("Received test message:", message);
-    //     }
-    // }, [message, topic]);
-
-    // machineData.forEach((machine) => {
-
-    //     const { message, topic } = useMqtt(`ws://192.168.88.62:9001/mqtt`, `1/${machine.machine_name}`); // Subscribe ke topik
-
-    //     // Perbarui status mesin ketika pesan MQTT diterima
-    //     useEffect(() => {
-    //         if (message) {
-    //             setMachineData((prevData) =>
-    //                 prevData.map((m) =>
-    //                     m.machine_name === machine.machine_name
-    //                         ? { ...m, machine_status: message }
-    //                         : m
-    //                 )
-    //             );
-    //         }
-    //     }, [message]);
-    // });
 
 
 
@@ -645,16 +565,16 @@ export const Floor = ({ selectedMode }) => {
         <>
             <CameraControls />
             {/* <ambientLight intensity={0.1} /> */}
-            <directionalLight position={[6, 4, 6]} intensity={3} color="white" />
+            <directionalLight position={[10, 10, 10]} intensity={4} color="white" />
             <group scale={0.66}>
-                <primitive object={scene} />
+                <primitive object={scene} castShadow receiveShadow/>
                 <group position={[5.5, 0.5, -1.2]}>
-                    <pointLight
+                    {/* <pointLight
                         intensity={3}
                         distance={15}
                         decay={3}
                         color="#4124c9" // blue
-                    />
+                    /> */}
                     <Box scale={0.1} visible={false}>
                         <meshBasicMaterial color="white" />
                     </Box>
@@ -698,7 +618,7 @@ export const Floor = ({ selectedMode }) => {
                         toggleCard(item.machine_id);
                       }}>
                         <SumitomoMoldingMachine key={item.machine_id} mode={item.mode} rotate={item.rotate} machine_id={item.machine_id} machine_name={item.machine_name} machine_status={item.machine_status} />
-                        {item.show_card && <MachineCard position={[-2, 8, -3]} status={1} output={2} mode={"green"} machine_name={item.machine_name} total_output={item.total_output} dailyplan_qty={item.dailyplan_qty} total_ng={item.total_ng}  machine_status={item.machine_status}/>}
+                        {item.show_card && <MachineCard position={item.rotate === '-180' ? [-2, 8, -3] : [item.position[0]+8,item.position[1]+10,item.position[2]] } status={1} output={2} mode={"green"} machine_name={item.machine_name} total_output={item.total_output} dailyplan_qty={item.dailyplan_qty} total_ng={item.total_ng}  machine_status={item.machine_status}/>}
                     </group>
                 ))}
 
