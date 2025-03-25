@@ -612,12 +612,12 @@ export const Floor = ({ selectedMode }) => {
 
 
                 {/* area one */}
-                {machineData.map((item) => (
+                {machineData.map((item, index) => (
                     <group key={item.machine_id} position={item.position} scale={item.scale} onClick={(e) => {
                         e.stopPropagation(); 
                         toggleCard(item.machine_id);
                       }}>
-                        <SumitomoMoldingMachine key={item.machine_id} mode={item.mode} rotate={item.rotate} machine_id={item.machine_id} machine_name={item.machine_name} machine_status={item.machine_status} />
+                        <SumitomoMoldingMachine delay={index * 100} key={item.machine_id} mode={item.mode} rotate={item.rotate} machine_id={item.machine_id} machine_name={item.machine_name} machine_status={item.machine_status} />
                         {item.show_card && <MachineCard position={item.rotate === '-180' ? [-2, 8, -3] : [item.position[0]+8,item.position[1]+10,item.position[2]] } status={1} output={2} mode={"green"} machine_name={item.machine_name} total_output={item.total_output} dailyplan_qty={item.dailyplan_qty} total_ng={item.total_ng}  machine_status={item.machine_status}/>}
                     </group>
                 ))}

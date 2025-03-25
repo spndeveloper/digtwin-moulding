@@ -26,6 +26,9 @@ export const SumitomoMoldingMachine = (props) => {
                 position2: [initialPositionTwo[0], parseFloat(initialPositionTwo[1]), initialPositionTwo[2]],
             }, // Posisi awal (kanan)
         to: async (next) => {
+
+            await new Promise(resolve => setTimeout(resolve, props.delay || 0));
+            
             while (true) {
                 await next(
                     { 
@@ -156,11 +159,6 @@ export const SumitomoMoldingMachine = (props) => {
 
     return (
         <group ref={group} {...props} dispose={null}>
-            {/* <animated.mesh 
-                    position={Cube009}
-                    geometry={nodes.Cube009.geometry}
-                    material={nodes.Cube009.material}
-                /> */}
 
 
             <primitive object={clonedScene} rotation-y={degToRad(props.rotate)} />
