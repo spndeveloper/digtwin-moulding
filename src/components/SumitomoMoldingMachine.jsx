@@ -85,12 +85,12 @@ export const SumitomoMoldingMachine = (props) => {
                 
 
                 if (props.rotate === "-180") {
-                    setTextPosition([child.position.x+0.3, child.position.y-0.64, child.position.z-4.1]); 
+                    setTextPosition([child.position.x+0.3, child.position.y-1.2, child.position.z-2.5]); 
                     setDisplayText(props.machine_id); 
                     setTextRotation([0, degToRad(90), 0])
                     console.log("💥 Text Updated");
                 }else{
-                    setTextPosition([child.position.x-0.2, child.position.y-0.6, child.position.z+4]);
+                    setTextPosition([child.position.x-0.2, child.position.y-1.1, child.position.z+2.5]);
                     setTextRotation([0, degToRad(-90), 0])
                     setDisplayText(props.machine_id)
                 }
@@ -168,7 +168,7 @@ export const SumitomoMoldingMachine = (props) => {
             <Text3D 
                 position={textPosition} 
                 rotation={textRotation} 
-                size={0.3}
+                size={1.5}
                 font="/fonts/helvetiker_regular.typeface.json"
                 height={0.1} 
                 curveSegments={12} 

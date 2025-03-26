@@ -34,9 +34,9 @@ export const MachineCard = ({
             {machine_status === "HIJAU"
               ? "Running"
               : machine_status === "KUNING"
-                ? "Under Maintenance"
+                ? "Maintenance"
                 : machine_status === "MERAH"
-                  ? "InActive"
+                  ? "Problem"
                   : "-"}
           </div>
         </div>
@@ -49,11 +49,11 @@ export const MachineCard = ({
               Output
             </div>
             <div className="flex items-center justify-items-center justify-center text-5xl">
-              0
+              {total_output || 0}
             </div>
-            <div className="flex items-center justify-items-center justify-center text-xl">
+            {/* <div className="flex items-center justify-items-center justify-center text-xl">
               Customer : -
-            </div>
+            </div> */}
           </div>
 
           {/* Informasi Mesin */}

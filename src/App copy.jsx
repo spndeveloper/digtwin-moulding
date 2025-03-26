@@ -11,13 +11,15 @@ function App() {
 
   return (
     <>
-      <Canvas shadows camera={{ position: [0, 10, 10], fov: 70 }}>
-        <color attach="background" args={["#7f8c8d"]} />
+      {/* <Canvas shadows camera={{ position: [4.2, 1.5, 7.5], fov: 30 }}> */}
+      <Canvas shadows camera={{ position: [0, 10, 30], fov: 30 }}>
+        <color attach="background" args={["#333"]} />
         <Experience selectedMode={selectedMode} />
         <EffectComposer>
             <Bloom luminanceThreshold={1} intensity={1.2} />
           </EffectComposer>
       </Canvas>
+      {/* <UI selectedMode={selectedMode} setSelectedMode={setSelectedMode} /> */}
       <Navigation />
     </>
   );

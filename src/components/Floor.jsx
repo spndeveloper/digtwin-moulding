@@ -50,7 +50,7 @@ export const Floor = ({ selectedMode }) => {
                 setMachineData((prevData) =>
                     prevData.map((m) =>
                         m.machine_name === machineName
-                            ? { ...m, machine_status: strMessage }
+                            ? { ...m, machine_status: strMessage, show_card: strMessage === "MERAH" }
                             : m
                     )
                 );
@@ -307,6 +307,22 @@ export const Floor = ({ selectedMode }) => {
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
+        },
+        {
+            machine_id: 31,
+            machine_name: "MACHINE 31",
+            position: [-5, 0, 9.3],
+            rotate: "0",
+            scale: [0.2, 0.2, 0.2],
+            show_card: false,
+        },
+        {
+            machine_id: 32,
+            machine_name: "MACHINE 32",
+            position: [-5, 0, 10.9],
+            rotate: "0",
+            scale: [0.2, 0.2, 0.2],
+            show_card: false,
         }
     ])
 
@@ -321,7 +337,13 @@ export const Floor = ({ selectedMode }) => {
             const result = await response.json();
             // Pastikan response sesuai struktur, misalnya result.DATA adalah array
             if (result.MESSAGETYPE === "S" && Array.isArray(result.DATA)) {
-                setApiData(result.DATA);
+                // setApiData(result.DATA);
+                const updatedData = result.DATA.map(machine => ({
+                    ...machine,
+                    show_card: machine.machine_status === "MERAH"
+                }));
+
+                setApiData(updatedData);
             }
             } catch (error) {
             console.error("Error fetching API data:", error);
@@ -561,6 +583,71 @@ export const Floor = ({ selectedMode }) => {
     const {scene} = useGLTF("models/floorV2.glb")
     const shadowBias = -0.005;
     const shadowMapSize = 2048;
+
+    const modalCardPosition = (id, rotate, position) => {
+        if(rotate === '-180'){
+            return [-2, 8, -3]
+        }else{
+
+            if(id === 11){
+                return [position[0]+1, position[1]+8.4, position[2]+12]
+            }
+            if(id === 12){
+                return [position[0]+1, position[1]+8.4, position[2]+11]
+            }
+            if(id === 13){
+                return [position[0]+1, position[1]+8.4, position[2]+9]
+            }
+            if(id === 14){
+                return [position[0]+1, position[1]+8.4, position[2]+7.5]
+            }
+            if(id === 15){
+                return [position[0]+1, position[1]+8.4, position[2]+6]
+            }
+            if(id === 16){
+                return [position[0]+1, position[1]+8.4, position[2]+4.2]
+            }
+            if(id === 17){
+                return [position[0]+1, position[1]+8.4, position[2]+2.8]
+            }
+            if(id === 18){
+                return [position[0]+1, position[1]+8.4, position[2]+1]
+            }
+            if(id === 19){
+                return [position[0]+1, position[1]+8.4, position[2]-0.2]
+            }
+            if(id === 20){
+                return [position[0]+1, position[1]+8.4, position[2]-2.5]
+            }
+            if(id === 28){
+                return [position[0]+1, position[1]+8.4, position[2]-7]
+            }
+            if(id === 29){
+                return [position[0]+1, position[1]+8.4, position[2]-8]
+            }
+            if(id === 30){
+                return [position[0]+1, position[1]+8.4, position[2]-9]
+            }
+            if(id === 31){
+                return [position[0]+6, position[1]+8.4, position[2]-7]
+            }
+            if(id === 32){
+                return [position[0]+6, position[1]+8.4, position[2]-8.5]
+            }
+            return [position[0], position[1], position[2]]
+        }
+
+        // if(id === 11){
+        //     return [position[0], position[1], position[2]]
+        // }
+
+        // if(rotate === '-180'){
+        //     return [-2, 8, -3]
+        // }else{
+        //     return [position[0]+8, position[1]+10, position[2]]
+        // }
+    }
+
     return (
         <>
             <CameraControls />
@@ -618,7 +705,7 @@ export const Floor = ({ selectedMode }) => {
                         toggleCard(item.machine_id);
                       }}>
                         <SumitomoMoldingMachine delay={index * 100} key={item.machine_id} mode={item.mode} rotate={item.rotate} machine_id={item.machine_id} machine_name={item.machine_name} machine_status={item.machine_status} />
-                        {item.show_card && <MachineCard position={item.rotate === '-180' ? [-2, 8, -3] : [item.position[0]+8,item.position[1]+10,item.position[2]] } status={1} output={2} mode={"green"} machine_name={item.machine_name} total_output={item.total_output} dailyplan_qty={item.dailyplan_qty} total_ng={item.total_ng}  machine_status={item.machine_status}/>}
+                        {item.show_card && <MachineCard position={modalCardPosition(item.machine_id, item.rotate, item.position)} status={1} output={2} mode={"green"} machine_name={item.machine_name} total_output={item.total_output} dailyplan_qty={item.dailyplan_qty} total_ng={item.total_ng}  machine_status={item.machine_status}/>}
                     </group>
                 ))}
 
