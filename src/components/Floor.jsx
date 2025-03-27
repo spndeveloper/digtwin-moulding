@@ -16,7 +16,7 @@ import { Button3D } from "./Button3D";
 export const Floor = ({ selectedMode }) => {
 
     const MQTT_BROKER_URL = "ws://192.168.88.62:9001/mqtt";
-    const TOPIC_PREFIX = "1000/#";
+    const TOPIC_PREFIX = "1/#";
 
     const [client, setClient] = useState(null);
     
@@ -77,7 +77,7 @@ export const Floor = ({ selectedMode }) => {
 
     const sendMessage = (machineId, message) => {
         if (client) {
-            const topic = `1000/MACHINE ${machineId}`;
+            const topic = `1/MACHINE ${machineId}`;
             client.publish(topic, message, { qos: 0, retain: false }, (err) => {
                 if (err) {
                     console.error("Failed to publish message:", err);
