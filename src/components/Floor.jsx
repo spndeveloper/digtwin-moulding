@@ -600,170 +600,242 @@ export const Floor = ({ selectedMode }) => {
         }
     ]
 
-    const buzzerBtn = [
+    const [buzzerData, setBuzzerData] = useState([
         {
             id: 1,
-            position: [-5.94, 0.02, -10.58]
+            position: [-5.94, 0.02, -10.58],
+            color: '#f39c12',
+            buzzer: false,
         },
         {
             id: 2,
-            position: [-5.94,0.02,-8.99]
+            position: [-5.94,0.02,-8.99],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 3,
-            position: [-5.94,0.02,-7.38]
+            position: [-5.94,0.02,-7.38],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 4,
-            position: [-5.94,0.02,-5.79]
+            position: [-5.94,0.02,-5.79],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 5,
-            position: [-5.94,0.02,-4.20]
+            position: [-5.94,0.02,-4.20],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 6,
-            position: [-5.94,0.02,-2.6]
+            position: [-5.94,0.02,-2.6],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 7,
-            position: [-5.94,0.02,-0.999]
+            position: [-5.94,0.02,-0.999],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 8,
-            position: [-5.94,0.02,0.60]
+            position: [-5.94,0.02,0.60],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 9,
-            position: [-5.94,0.02,2.22]
+            position: [-5.94,0.02,2.22],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 10,
-            position: [-5.94,0.02,3.82]
+            position: [-5.94,0.02,3.82],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 11,
-            position: [-1.25,0.02,-9.8]
+            position: [-1.25,0.02,-9.8],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 12,
-            position: [-1.25,0.02,-8.21]
+            position: [-1.25,0.02,-8.21],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 13,
-            position: [-1.25,0.02,-6.61]
+            position: [-1.25,0.02,-6.61],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 14,
-            position: [-1.25,0.02,-5.01]
+            position: [-1.25,0.02,-5.01],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 15,
-            position: [-1.25,0.02,-3.42]
+            position: [-1.25,0.02,-3.42],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 16,
-            position: [-1.25,0.02,-1.72]
+            position: [-1.25,0.02,-1.72],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 17,
-            position: [-1.25,0.02,-0.12]
+            position: [-1.25,0.02,-0.12],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 18,
-            position: [-1.25,0.02,1.49]
+            position: [-1.25,0.02,1.49],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 19,
-            position: [-1.25,0.02,2.88]
+            position: [-1.25,0.02,2.88],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 20,
-            position: [-1.25,0.02,4.68]
+            position: [-1.25,0.02,4.68],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 21,
-            position: [13.15, 0.02, -6.09]
+            position: [13.15, 0.02, -6.09],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 22,
-            position: [13.15, 0.02, -4.49]
+            position: [13.15, 0.02, -4.49],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 23,
-            position: [13.15, 0.02, -2.89]
+            position: [13.15, 0.02, -2.89],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 24,
-            position: [13.15, 0.02, -1.29]
+            position: [13.15, 0.02, -1.29],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 25,
-            position: [13.15, 0.02, 0.31]
+            position: [13.15, 0.02, 0.31],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 26,
-            position: [13.15, 0.02, 1.91]
+            position: [13.15, 0.02, 1.91],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 27,
-            position: [13.15, 0.02,3.51]
+            position: [13.15, 0.02,3.51],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 28,
-            position: [-1.25,0.02,9.19]
+            position: [-1.25,0.02,9.19],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 29,
-            position: [-1.25,0.02,10.79]
+            position: [-1.25,0.02,10.79],
+            color: '#f39c12',
+            buzzer: false,
         }
         ,
         {
             id: 30,
-            position: [-1.25,0.02,12.38]
-        }
-        ,
+            position: [-1.25,0.02,12.38],
+            color: '#f39c12',
+            buzzer: false,
+        },
         {
             id: 31,
-            position: [-5.86,0.02,9.19]
-        }
-        ,
+            position: [-5.86,0.02,9.19],
+            color: '#f39c12',
+            buzzer: false,
+        },
         {
             id: 32,
-            position: [-5.86,0.02,10.79]
+            position: [-5.86,0.02,10.79],
+            color: '#f39c12',
+            buzzer: false,
         }
-    ]
+    ])
 
 
-    const handleBuzzer = (id) => {
-        sendMessage(id, "alarm_on")
+    const handleBuzzer = (id, buzzer) => {
+        setBuzzerData(prevData =>
+            prevData.map(item =>
+                item.id === id ? { ...item, buzzer: !item.buzzer } : item
+            )
+        );
+
+        if(!buzzer){
+            sendMessage(id, "alarm_on")
+        }else{
+            sendMessage(id, "alarm_off")
+        }
     }
       
 
@@ -904,14 +976,14 @@ export const Floor = ({ selectedMode }) => {
                     </group>
                 ))}
 
-                {buzzerBtn.map((item, index) => (
+                {buzzerData.map((item) => (
                     <group key={item.id} position={item.position}>
                         <mesh position={[1,1.1,1]} scale={[0.3,0.3,0.3]} onClick={(e) => {
                             e.stopPropagation(); 
-                            handleBuzzer(item.id)
+                            handleBuzzer(item.id, item.buzzer)
                         }}>
                             <cylinderGeometry args={[0.2, 0.3, 0.1, 32]} />
-                            <meshStandardMaterial color="#f39c12" />
+                            <meshStandardMaterial color={item.buzzer ? '#e74c3c' : '#f39c12'} />
                         </mesh>
                         <mesh position={[1,1.07,1]} scale={[0.32,0.32,0.32]}>
                             <cylinderGeometry args={[0.3, 0.3, 0.1, 32]} />
