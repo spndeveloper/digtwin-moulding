@@ -11,7 +11,14 @@ import adapterFetch from 'alova/fetch';
 import useMqtt from "./Mqtt"
 import mqtt from 'mqtt';
 
+import { Button3D } from "./Button3D";
+
 export const Floor = ({ selectedMode }) => {
+
+    const MQTT_BROKER_URL = "ws://192.168.88.62:9001/mqtt";
+    const TOPIC_PREFIX = "1000/#";
+
+    const [client, setClient] = useState(null);
     
       const toggleCard = (id) => {
         console.log(id);
@@ -27,13 +34,13 @@ export const Floor = ({ selectedMode }) => {
 
        // MQTT Client
     useEffect(() => {
-        const client = mqtt.connect('ws://192.168.88.62:9001/mqtt');
+        const client = mqtt.connect(MQTT_BROKER_URL);
 
         client.on('connect', () => {
             console.log('Connected to MQTT broker');
-            client.subscribe('1/#', (err) => {
+            client.subscribe(TOPIC_PREFIX, (err) => {
                 if (!err) {
-                    console.log('Subscribed to topic 1/#');
+                    console.log(`Subscribed to topic ${TOPIC_PREFIX}`);
                 } else {
                     console.error('Failed to subscribe:', err);
                 }
@@ -60,10 +67,28 @@ export const Floor = ({ selectedMode }) => {
             }
         });
 
+        setClient(client);
+
         return () => {
             client.end();
         };
     }, []);
+
+
+    const sendMessage = (machineId, message) => {
+        if (client) {
+            const topic = `1000/MACHINE ${machineId}`;
+            client.publish(topic, message, { qos: 0, retain: false }, (err) => {
+                if (err) {
+                    console.error("Failed to publish message:", err);
+                } else {
+                    console.log(`Message sent to ${topic}: ${message}`);
+                }
+            });
+        } else {
+            console.error("MQTT client is not connected");
+        }
+    };
      
 
 
@@ -575,7 +600,171 @@ export const Floor = ({ selectedMode }) => {
         }
     ]
 
-    
+    const buzzerBtn = [
+        {
+            id: 1,
+            position: [-5.94, 0.02, -10.58]
+        },
+        {
+            id: 2,
+            position: [-5.94,0.02,-8.99]
+        }
+        ,
+        {
+            id: 3,
+            position: [-5.94,0.02,-7.38]
+        }
+        ,
+        {
+            id: 4,
+            position: [-5.94,0.02,-5.79]
+        }
+        ,
+        {
+            id: 5,
+            position: [-5.94,0.02,-4.20]
+        }
+        ,
+        {
+            id: 6,
+            position: [-5.94,0.02,-2.6]
+        }
+        ,
+        {
+            id: 7,
+            position: [-5.94,0.02,-0.999]
+        }
+        ,
+        {
+            id: 8,
+            position: [-5.94,0.02,0.60]
+        }
+        ,
+        {
+            id: 9,
+            position: [-5.94,0.02,2.22]
+        }
+        ,
+        {
+            id: 10,
+            position: [-5.94,0.02,3.82]
+        }
+        ,
+        {
+            id: 11,
+            position: [-1.25,0.02,-9.8]
+        }
+        ,
+        {
+            id: 12,
+            position: [-1.25,0.02,-8.21]
+        }
+        ,
+        {
+            id: 13,
+            position: [-1.25,0.02,-6.61]
+        }
+        ,
+        {
+            id: 14,
+            position: [-1.25,0.02,-5.01]
+        }
+        ,
+        {
+            id: 15,
+            position: [-1.25,0.02,-3.42]
+        }
+        ,
+        {
+            id: 16,
+            position: [-1.25,0.02,-1.72]
+        }
+        ,
+        {
+            id: 17,
+            position: [-1.25,0.02,-0.12]
+        }
+        ,
+        {
+            id: 18,
+            position: [-1.25,0.02,1.49]
+        }
+        ,
+        {
+            id: 19,
+            position: [-1.25,0.02,2.88]
+        }
+        ,
+        {
+            id: 20,
+            position: [-1.25,0.02,4.68]
+        }
+        ,
+        {
+            id: 21,
+            position: [13.15, 0.02, -6.09]
+        }
+        ,
+        {
+            id: 22,
+            position: [13.15, 0.02, -4.49]
+        }
+        ,
+        {
+            id: 23,
+            position: [13.15, 0.02, -2.89]
+        }
+        ,
+        {
+            id: 24,
+            position: [13.15, 0.02, -1.29]
+        }
+        ,
+        {
+            id: 25,
+            position: [13.15, 0.02, 0.31]
+        }
+        ,
+        {
+            id: 26,
+            position: [13.15, 0.02, 1.91]
+        }
+        ,
+        {
+            id: 27,
+            position: [13.15, 0.02,3.51]
+        }
+        ,
+        {
+            id: 28,
+            position: [-1.25,0.02,9.19]
+        }
+        ,
+        {
+            id: 29,
+            position: [-1.25,0.02,10.79]
+        }
+        ,
+        {
+            id: 30,
+            position: [-1.25,0.02,12.38]
+        }
+        ,
+        {
+            id: 31,
+            position: [-5.86,0.02,9.19]
+        }
+        ,
+        {
+            id: 32,
+            position: [-5.86,0.02,10.79]
+        }
+    ]
+
+
+    const handleBuzzer = (id) => {
+        sendMessage(id, "alarm_on")
+    }
       
 
     const animatedLight = useRef()
@@ -714,6 +903,25 @@ export const Floor = ({ selectedMode }) => {
                         <SumitomoMoldingConveyor key={item.conveyor_id} mode={item.mode} rotate={item.rotate} />
                     </group>
                 ))}
+
+                {buzzerBtn.map((item, index) => (
+                    <group key={item.id} position={item.position}>
+                        <mesh position={[1,1.1,1]} scale={[0.3,0.3,0.3]} onClick={(e) => {
+                            e.stopPropagation(); 
+                            handleBuzzer(item.id)
+                        }}>
+                            <cylinderGeometry args={[0.2, 0.3, 0.1, 32]} />
+                            <meshStandardMaterial color="#f39c12" />
+                        </mesh>
+                        <mesh position={[1,1.07,1]} scale={[0.32,0.32,0.32]}>
+                            <cylinderGeometry args={[0.3, 0.3, 0.1, 32]} />
+                            <meshStandardMaterial color="black" />
+                        </mesh>
+                    </group>
+                ))}
+
+
+                
             </group>
 
         </>

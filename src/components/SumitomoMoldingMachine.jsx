@@ -3,6 +3,7 @@ import { degToRad } from "three/src/math/MathUtils.js";
 import { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { animated, useSpring } from "@react-spring/three";
+import { Button3D } from "./Button3D";
 
 export const SumitomoMoldingMachine = (props) => {
     const { scene, nodes, materials } = useGLTF("models/sumitomo-mld2.glb");
