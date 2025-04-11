@@ -64,19 +64,19 @@ export const SumitomoMoldingMachine = (props) => {
 
 
     useEffect(() => {
-        console.log("Current machine status:", props.machine_status);
+        // console.log("Current machine status:", props.machine_status);
         const newScene = scene.clone(true);
 
         newScene.traverse((child) => {
 
             if (child.isMesh && child.name === "Cube009") {
                 cube009Ref.current = child; // Simpan referensi ke Cube009
-                console.log("Cube009 found:", child);
+                // console.log("Cube009 found:", child);
               }
 
               if (child.isMesh && child.name === "Cube012") {
                 cube012Ref.current = child; // Simpan referensi ke Cube009
-                console.log("Cube0012 found:", child);
+                // console.log("Cube0012 found:", child);
               }
 
 
@@ -89,7 +89,7 @@ export const SumitomoMoldingMachine = (props) => {
                     setTextPosition([child.position.x+0.3, child.position.y-1.2, child.position.z-2.5]); 
                     setDisplayText(props.machine_id); 
                     setTextRotation([0, degToRad(90), 0])
-                    console.log("💥 Text Updated");
+                    // console.log("💥 Text Updated");
                 }else{
                     setTextPosition([child.position.x-0.2, child.position.y-1.1, child.position.z+2.5]);
                     setTextRotation([0, degToRad(-90), 0])

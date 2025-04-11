@@ -2,6 +2,8 @@ import { Html, Box, CameraControls, useGLTF } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { SumitomoMoldingMachine } from "./SumitomoMoldingMachine";
 import { SumitomoMoldingConveyor } from "./SumitomoMoldingConveyor";
+import { Operator } from "./Operator";
+import { OperatorTable } from "./OperatorTable";
 import { PcbLoader } from "./PcbLoader";
 import { ConveyorPcbLoader } from "./ConveyorPcbLoader";
 import { MagazineConveyor } from "./MagazineConveyor";
@@ -21,7 +23,7 @@ export const Floor = ({ selectedMode }) => {
     const [client, setClient] = useState(null);
     
       const toggleCard = (id) => {
-        console.log(id);
+        // console.log(id);
         
         setMachineData((prevData) =>
             prevData.map((machine) =>
@@ -176,7 +178,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 11,
             machine_name: "MACHINE 11",
-            position: [-0.4, 0, -9.7],
+            position: [-0.4, 0, -9.5],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -184,7 +186,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 12,
             machine_name: "MACHINE 12",
-            position: [-0.4, 0, -8.1],
+            position: [-0.4, 0, -7.9],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -192,7 +194,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 13,
             machine_name: "MACHINE 13",
-            position: [-0.4, 0, -6.5],
+            position: [-0.4, 0, -6.3],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -200,7 +202,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 14,
             machine_name: "MACHINE 14",
-            position: [-0.4, 0, -4.9],
+            position: [-0.4, 0, -4.7],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -208,7 +210,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 15,
             machine_name: "MACHINE 15",
-            position: [-0.4, 0, -3.3],
+            position: [-0.4, 0, -3.1],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -216,7 +218,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 16,
             machine_name: "MACHINE 16",
-            position: [-0.4, 0, -1.6],
+            position: [-0.4, 0, -1.5],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -224,7 +226,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 17,
             machine_name: "MACHINE 17",
-            position: [-0.4, 0, 0],
+            position: [-0.4, 0, 0.1],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -232,7 +234,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 18,
             machine_name: "MACHINE 18",
-            position: [-0.4, 0, 1.6],
+            position: [-0.4, 0, 1.7],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -240,7 +242,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 19,
             machine_name: "MACHINE 19",
-            position: [-0.4, 0, 3.],
+            position: [-0.4, 0, 3.3],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -248,7 +250,7 @@ export const Floor = ({ selectedMode }) => {
         {
             machine_id: 20,
             machine_name: "MACHINE 20",
-            position: [-0.4, 0, 4.8],
+            position: [-0.4, 0, 4.9],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
             show_card: false,
@@ -371,7 +373,7 @@ export const Floor = ({ selectedMode }) => {
                 setApiData(updatedData);
             }
             } catch (error) {
-            console.error("Error fetching API data:", error);
+                console.error("Error fetching API data:", error);
             }
         };
 
@@ -461,70 +463,70 @@ export const Floor = ({ selectedMode }) => {
         {
             conveyor_id: 11,
             conveyor_name: "CONVEYOR 11",
-            position: [1.3, 0, -8.5],
+            position: [1.3, 0, -9.7],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 12,
             conveyor_name: "CONVEYOR 12",
-            position: [1.3, 0, -6.9],
+            position: [1.3, 0, -8.1],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 13,
             conveyor_name: "CONVEYOR 13",
-            position: [1.3, 0, -5.3],
+            position: [1.3, 0, -6.6],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 14,
             conveyor_name: "CONVEYOR 14",
-            position: [1.3, 0, -3.7],
+            position: [1.3, 0, -4.9],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 15,
             conveyor_name: "CONVEYOR 15",
-            position: [1.3, 0, -2.1],
+            position: [1.3, 0, -3.3],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 16,
             conveyor_name: "CONVEYOR 16",
-            position: [1.3, 0, -0.4],
+            position: [1.3, 0, -1.7],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 17,
             conveyor_name: "CONVEYOR 17",
-            position: [1.3, 0, 1.2],
+            position: [1.3, 0, -0.1],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 18,
             conveyor_name: "CONVEYOR 18",
-            position: [1.3, 0, 2.8],
+            position: [1.3, 0, 1.5],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 19,
             conveyor_name: "CONVEYOR 19",
-            position: [1.3, 0, 4.4],
+            position: [1.3, 0, 3],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
         {
             conveyor_id: 20,
             conveyor_name: "CONVEYOR 20",
-            position: [1.3, 0, 6],
+            position: [1.3, 0, 4.6],
             rotate: "0",
             scale: [0.2, 0.2, 0.2],
         },
@@ -840,8 +842,7 @@ export const Floor = ({ selectedMode }) => {
       
 
     const animatedLight = useRef()
-    // const {scene} = useGLTF("models/moulding-floor.glb")
-    const {scene} = useGLTF("models/floorV2.glb")
+    const {scene} = useGLTF("models/floorV3.glb")
     const shadowBias = -0.005;
     const shadowMapSize = 2048;
 
@@ -912,7 +913,7 @@ export const Floor = ({ selectedMode }) => {
     return (
         <>
             <CameraControls />
-            {/* <ambientLight intensity={0.1} /> */}
+            <ambientLight color="white" intensity={0.1} />
             <directionalLight position={[10, 10, 10]} intensity={4} color="white" />
             <group scale={0.66}>
                 <primitive object={scene} castShadow receiveShadow/>
@@ -992,12 +993,21 @@ export const Floor = ({ selectedMode }) => {
                     </group>
                 ))}
 
+            
 
                 
             </group>
+
+            {/* <group key={"adwadwa"} position={[1.7,-0.957,3.05]} scale={[0.02, 0.02, 0.02]}>
+                <Operator  />
+            </group>
+
+            <group key={"adwadwa1"} position={[-0.20,-0.02,3.4]} scale={[0.13, 0.13, 0.13]}>
+                <OperatorTable rotate={"-180"}  />
+            </group> */}
 
         </>
     )
 }
 
-useGLTF.preload("models/moulding-floor.glb")
+useGLTF.preload("models/floorV3.glb")
