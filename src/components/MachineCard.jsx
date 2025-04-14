@@ -14,6 +14,7 @@ export const MachineCard = ({
   pass_output,
   plan_qty,
   code,
+  duration_text,
 }) => {
   console.log("✌", machine_name);
   const getStatusColor = (code) => {
@@ -40,8 +41,12 @@ export const MachineCard = ({
           }}
         >
           <h3 className="font-bold text-xl">{machine_name}</h3>
-          <div className="font-bold text-xl">
-            Status Machine: {status_name}
+          <div className={`font-bold text-xl ${code === 'R' ? '' : 'flex justify-between'}`}
+           >
+            <span>Status: {status_name}</span>
+            {code !== "R" && (
+              <span>Duration: {duration_text}</span>
+            )}
           </div>
         </div>
 

@@ -18,7 +18,7 @@ import { set } from "lodash";
 
 export const Floor = ({ selectedMode }) => {
   const MQTT_BROKER_URL = "ws://192.168.88.62:9001/mqtt";
-  const TOPIC_PREFIX = "1/#";
+  const TOPIC_PREFIX = "1000/#";
 
   const [client, setClient] = useState(null);
 
@@ -81,7 +81,7 @@ export const Floor = ({ selectedMode }) => {
 
   const sendMessage = (machineId, message) => {
     if (client) {
-      const topic = `1/MACHINE ${machineId}`;
+      const topic = `1000/MACHINE ${machineId}`;
       client.publish(topic, message, { qos: 0, retain: false }, (err) => {
         if (err) {
           console.error("Failed to publish message:", err);
@@ -1000,6 +1000,7 @@ export const Floor = ({ selectedMode }) => {
                 plan_qty={item.plan_qty}
                 code={item.code}
                 status_name={item.status_name}
+                duration_text={item.duration_text}
               />
             )}
           </group>

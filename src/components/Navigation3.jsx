@@ -40,7 +40,6 @@ export const Navigation = () => {
   const [nav, setNav] = useState(false);
   const [dashboard1, setDasboard1] = useState(false);
   const lottieRef = useRef();
-  const [lastUpdate, SetLastUpdate] = useState("");
 
   const showMenu = () => {
     setMenu(!menu);
@@ -71,7 +70,7 @@ export const Navigation = () => {
   };
   const buttons = [
     {
-      title: "Dashboard Achievement",
+      title: "Dashboard Achievement", 
       icon: "dashboard-achievement-logo.png",
     },
     {
@@ -88,9 +87,6 @@ export const Navigation = () => {
     slider.startX = e.pageX - slider.offsetLeft;
     slider.scrollLeftStart = slider.scrollLeft;
   };
-  const hadnleLastUpdate = (lastUpdate) => {
-  SetLastUpdate(lastUpdate)
-  }
 
   const handleMouseLeaveOrUp = () => {
     scrollRef.current.isDown = false;
@@ -146,20 +142,13 @@ export const Navigation = () => {
     slider.scrollLeft = slider.scrollLeftStart - walk;
   };
   useEffect(() => {
-    const lastUpdate = new Date();
-    SetLastUpdate(lastUpdate.toLocaleString("id-ID", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    }).replace(" pukul", ","))
+    // Set timer untuk mengubah loading menjadi false setelah 2 detik
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 2000); // 2000 milidetik = 2 detik
+
+    // Bersihkan timer saat komponen di-unmount
     return () => clearTimeout(timer);
-    
   }, []);
 
   return (
@@ -170,13 +159,30 @@ export const Navigation = () => {
         <img src="/images/dot-logo.png" className="w-40 animate-pulse" />
       </div>
       <div className="mx-auto h-full max-w-screen-xxl w-full flex flex-col justify-between absolute inset-0">
-        <div className="flex justify-between items-center p-10 ">
+        <div className="flex justify-between items-center p-10">
           <a className="pointer-events-auto" href="#" onClick={showNav}>
             <img className="w-20" src="/images/dot-logo.png" />
           </a>
-          <div className=" flex items-center justify-center bg-transparent text-white">
-            Last Update: {lastUpdate}
-          </div>
+          <a className="pointer-events-auto" href="#" onClick={closeAll}>
+            {(menu || dashboard1) && (
+              <div className=" flex items-center justify-center bg-transparent text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
+              </div>
+            )}
+          </a>
         </div>
       </div>
       {nav && (
@@ -258,27 +264,8 @@ export const Navigation = () => {
       )}
 
       <div className="md:px-10 flex flex-col mx-auto h-full max-w-screen-xxl w-full justify-end items-end">
-        <div className="text-white"></div>
         {menu && (
           <div className="md:rounded-t-lg bg-gradient-to-br backdrop-blur-sm drop-shadow-md flex flex-col p-2 gap-3 overflow-hidden min-w-[40%] items-end">
-            <div className=" flex items-center justify-center bg-transparent text-white bg-gradient-to-br from-black/30 to-indigo-900/20 rounded-3xl">
-              <a className="pointer-events-auto" href="#" onClick={closeAll}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-8"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18 18 6M6 6l12 12"
-                  />
-                </svg>
-              </a>
-            </div>
             <div className="grid grid-cols-2 gap-4 justify-between rounded-3xl w-full">
               <div className="bg-gradient-to-br from-black/30 to-indigo-900/20 p-5 rounded-3xl flex flex-col space-y-2">
                 <div className="text-white">
@@ -391,7 +378,7 @@ export const Navigation = () => {
         )}
         {dashboard1 && (
           <div className="md:rounded-t-lg bg-gradient-to-br backdrop-blur-sm drop-shadow-md flex flex-col p-2 gap-3 overflow-hidden max-w-[60%] min-w-[40%] min-h-[40%] items-end">
-            <DashboardMachineIndicator close={closeAll} changeLastUpdate={hadnleLastUpdate} />
+            <DashboardMachineIndicator />
             {/* <div className="px-4 flex h-full w-full bg-gradient-to-br from-black/30 to-indigo-900/20 rounded-3xl flex flex-col py-2">
               <div className="flex justify-between text-white">
                 <div>Machine Online Indicator</div>
