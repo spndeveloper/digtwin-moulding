@@ -183,6 +183,7 @@ export const SumitomoMoldingMachine = (props) => {
                 <meshStandardMaterial color="white" /> {/* Warna teks utama putih */}
             </Text3D>
         </group>
+        
     );
 };
 

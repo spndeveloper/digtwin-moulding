@@ -45,7 +45,7 @@ export const MachineCard = ({
            >
             <span>Status: {status_name}</span>
             {code !== "R" && (
-              <span>Duration: {duration_text}</span>
+              <span className="text-yellow-200 text-4xl">{duration_text}</span>
             )}
           </div>
         </div>

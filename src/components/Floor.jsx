@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { SumitomoMoldingMachine } from "./SumitomoMoldingMachine";
 import { SumitomoMoldingConveyor } from "./SumitomoMoldingConveyor";
 import { Operator } from "./Operator";
+import { Technician } from "./Technician";
 import { OperatorTable } from "./OperatorTable";
 import { PcbLoader } from "./PcbLoader";
 import { ConveyorPcbLoader } from "./ConveyorPcbLoader";
@@ -178,7 +179,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 11,
       machine_name: "MACHINE 11",
-      position: [-0.4, 0, -9.5],
+      position: [-0.4, 0, -10.5],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -186,7 +187,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 12,
       machine_name: "MACHINE 12",
-      position: [-0.4, 0, -7.9],
+      position: [-0.4, 0, -9],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -194,7 +195,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 13,
       machine_name: "MACHINE 13",
-      position: [-0.4, 0, -6.3],
+      position: [-0.4, 0, -7.5],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -202,7 +203,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 14,
       machine_name: "MACHINE 14",
-      position: [-0.4, 0, -4.7],
+      position: [-0.4, 0, -6],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -210,7 +211,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 15,
       machine_name: "MACHINE 15",
-      position: [-0.4, 0, -3.1],
+      position: [-0.4, 0, -4.5],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -218,7 +219,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 16,
       machine_name: "MACHINE 16",
-      position: [-0.4, 0, -1.5],
+      position: [-0.4, 0, -3],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -226,7 +227,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 17,
       machine_name: "MACHINE 17",
-      position: [-0.4, 0, 0.1],
+      position: [-0.4, 0, -1.5],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -234,7 +235,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 18,
       machine_name: "MACHINE 18",
-      position: [-0.4, 0, 1.7],
+      position: [-0.4, 0, 1.5],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -242,7 +243,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 19,
       machine_name: "MACHINE 19",
-      position: [-0.4, 0, 3.3],
+      position: [-0.4, 0, 3],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -250,7 +251,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 20,
       machine_name: "MACHINE 20",
-      position: [-0.4, 0, 4.9],
+      position: [-0.4, 0, 4.5],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -258,15 +259,15 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 21,
       machine_name: "MACHINE 21",
-      position: [14.3, 0, -4.2],
-      rotate: "-180",
+      position: [-0.4, 0, 6],
+      rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
     },
     {
       machine_id: 22,
       machine_name: "MACHINE 22",
-      position: [14.3, 0, -1],
+      position: [14.3, 0, -6],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -274,7 +275,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 23,
       machine_name: "MACHINE 23",
-      position: [14.3, 0, 0.6],
+      position: [14.3, 0, -4.4],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -282,7 +283,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 24,
       machine_name: "MACHINE 24",
-      position: [14.3, 0, 2.2],
+      position: [14.3, 0, -2.8],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -290,7 +291,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 25,
       machine_name: "MACHINE 25",
-      position: [14.3, 0, 3.8],
+      position: [14.3, 0, -1.2],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -298,7 +299,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 26,
       machine_name: "MACHINE 26",
-      position: [14.3, 0, 5.4],
+      position: [14.3, 0, 0.4],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -306,7 +307,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 27,
       machine_name: "MACHINE 27",
-      position: [14.3, 0, -2.6],
+      position: [14.3, 0, 2],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -314,23 +315,23 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 28,
       machine_name: "MACHINE 28",
-      position: [-0.4, 0, 9.3],
-      rotate: "0",
+      position: [14.3, 0, 3.6],
+      rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
     },
     {
       machine_id: 29,
       machine_name: "MACHINE 29",
-      position: [-0.4, 0, 10.9],
-      rotate: "0",
+      position: [14.3, 0, 5.2],
+      rotate: "-180",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
     },
     {
       machine_id: 30,
       machine_name: "MACHINE 30",
-      position: [-0.4, 0, 12.5],
+      position: [-4, 0, 9.7],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -338,7 +339,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 31,
       machine_name: "MACHINE 31",
-      position: [-5, 0, 9.3],
+      position: [-4, 0, 11.3],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -346,7 +347,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 32,
       machine_name: "MACHINE 32",
-      position: [-5, 0, 10.9],
+      position: [-4, 0, 12.9],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -499,140 +500,154 @@ export const Floor = ({ selectedMode }) => {
     {
       conveyor_id: 11,
       conveyor_name: "CONVEYOR 11",
-      position: [1.3, 0, -9.7],
+      position: [1.3, 0, -10.7],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 12,
       conveyor_name: "CONVEYOR 12",
-      position: [1.3, 0, -8.1],
+      position: [1.3, 0, -9.2],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 13,
       conveyor_name: "CONVEYOR 13",
-      position: [1.3, 0, -6.6],
+      position: [1.3, 0, -7.7],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 14,
       conveyor_name: "CONVEYOR 14",
-      position: [1.3, 0, -4.9],
+      position: [1.3, 0, -6.2],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 15,
       conveyor_name: "CONVEYOR 15",
-      position: [1.3, 0, -3.3],
+      position: [1.3, 0, -4.7],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 16,
       conveyor_name: "CONVEYOR 16",
-      position: [1.3, 0, -1.7],
+      position: [1.3, 0, -3.2],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 17,
       conveyor_name: "CONVEYOR 17",
-      position: [1.3, 0, -0.1],
+      position: [1.3, 0, -1.7],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 18,
       conveyor_name: "CONVEYOR 18",
-      position: [1.3, 0, 1.5],
+      position: [1.3, 0, 1.3],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 19,
       conveyor_name: "CONVEYOR 19",
-      position: [1.3, 0, 3],
+      position: [1.3, 0, 2.8],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 20,
       conveyor_name: "CONVEYOR 20",
-      position: [1.3, 0, 4.6],
+      position: [1.3, 0, 4.3],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 21,
       conveyor_name: "CONVEYOR 21",
-      position: [13, 0, -4],
-      rotate: "-180",
+      position: [1.3, 0, 5.8],
+      rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 22,
       conveyor_name: "CONVEYOR 22",
-      position: [13, 0, -2.4],
+      position: [13, 0, -5.8],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 23,
       conveyor_name: "CONVEYOR 23",
-      position: [13, 0, -0.8],
+      position: [13, 0, -4.2],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 24,
       conveyor_name: "CONVEYOR 24",
-      position: [13, 0, 0.8],
+      position: [13, 0, -2.6],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 25,
       conveyor_name: "CONVEYOR 25",
-      position: [13, 0, 2.4],
+      position: [13, 0, -1],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 26,
       conveyor_name: "CONVEYOR 26",
-      position: [13, 0, 4],
+      position: [13, 0, 0.6],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 27,
       conveyor_name: "CONVEYOR 27",
-      position: [13, 0, 5.6],
+      position: [13, 0, 2.2],
       rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 28,
       conveyor_name: "CONVEYOR 28",
-      position: [1.3, 0, 10.5],
-      rotate: "0",
+      position: [13, 0, 3.8],
+      rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 29,
       conveyor_name: "CONVEYOR 29",
-      position: [1.3, 0, 12.1],
-      rotate: "0",
+      position: [13, 0, 5.4],
+      rotate: "-180",
       scale: [0.2, 0.2, 0.2],
     },
     {
       conveyor_id: 30,
       conveyor_name: "CONVEYOR 30",
-      position: [1.3, 0, 13.7],
+      position: [-2.3, 0, 9.5],
+      rotate: "0",
+      scale: [0.2, 0.2, 0.2],
+    },
+    {
+      conveyor_id: 31,
+      conveyor_name: "CONVEYOR 31",
+      position: [-2.3, 0, 11.1],
+      rotate: "0",
+      scale: [0.2, 0.2, 0.2],
+    },
+    {
+      conveyor_id: 32,
+      conveyor_name: "CONVEYOR 32",
+      position: [-2.3, 0, 12.7],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
     },
@@ -701,133 +716,133 @@ export const Floor = ({ selectedMode }) => {
     },
     {
       id: 11,
-      position: [-1.25, 0.02, -9.8],
+      position: [-1.25, 0.02, -10.7],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 12,
-      position: [-1.25, 0.02, -8.21],
+      position: [-1.25, 0.02, -9.2],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 13,
-      position: [-1.25, 0.02, -6.61],
+      position: [-1.25, 0.02, -7.7],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 14,
-      position: [-1.25, 0.02, -5.01],
+      position: [-1.25, 0.02, -6.2],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 15,
-      position: [-1.25, 0.02, -3.42],
+      position: [-1.25, 0.02, -4.7],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 16,
-      position: [-1.25, 0.02, -1.72],
+      position: [-1.25, 0.02, -3.2],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 17,
-      position: [-1.25, 0.02, -0.12],
+      position: [-1.25, 0.02, -1.7],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 18,
-      position: [-1.25, 0.02, 1.49],
+      position: [-1.25, 0.02, 1.3],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 19,
-      position: [-1.25, 0.02, 2.88],
+      position: [-1.25, 0.02, 2.8],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 20,
-      position: [-1.25, 0.02, 4.68],
+      position: [-1.25, 0.02, 4.3],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 21,
-      position: [13.15, 0.02, -6.09],
+      position: [-1.25, 0.02, 5.8],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 22,
-      position: [13.15, 0.02, -4.49],
+      position: [13.15, 0.02, -7.8],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 23,
-      position: [13.15, 0.02, -2.89],
+      position: [13.15, 0.02, -6.2],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 24,
-      position: [13.15, 0.02, -1.29],
+      position: [13.15, 0.02, -4.6],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 25,
-      position: [13.15, 0.02, 0.31],
+      position: [13.15, 0.02, -3],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 26,
-      position: [13.15, 0.02, 1.91],
+      position: [13.15, 0.02, -1.4],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 27,
-      position: [13.15, 0.02, 3.51],
+      position: [13.15, 0.02, 0.2],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 28,
-      position: [-1.25, 0.02, 9.19],
+      position: [13.15, 0.02, 1.8],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 29,
-      position: [-1.25, 0.02, 10.79],
+      position: [13.15, 0.02, 3.4],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 30,
-      position: [-1.25, 0.02, 12.38],
+      position: [-4.8, 0.02, 9.5],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 31,
-      position: [-5.86, 0.02, 9.19],
+      position: [-4.8, 0.02, 11.1],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 32,
-      position: [-5.86, 0.02, 10.79],
+      position: [-4.8, 0.02, 12.7],
       color: "#f39c12",
       buzzer: false,
     },
@@ -848,7 +863,7 @@ export const Floor = ({ selectedMode }) => {
   };
 
   const animatedLight = useRef();
-  const { scene } = useGLTF("models/floorV3.glb");
+  const { scene } = useGLTF("models/floorV4.glb");
   const shadowBias = -0.005;
   const shadowMapSize = 2048;
 
@@ -1043,15 +1058,20 @@ export const Floor = ({ selectedMode }) => {
         ))}
       </group>
 
-      {/* <group key={"adwadwa"} position={[1.7,-0.957,3.05]} scale={[0.02, 0.02, 0.02]}>
-                <Operator  />
-            </group>
 
-            <group key={"adwadwa1"} position={[-0.20,-0.02,3.4]} scale={[0.13, 0.13, 0.13]}>
-                <OperatorTable rotate={"-180"}  />
-            </group> */}
+      {/* <group key={"technician"} position={[-0.03,-0.02,-6.1]} scale={[35, 35, 35]}>
+          <Technician rotate={"-180"}  />
+      </group> */}
+
+      {/* <group key={"adwadwa"} position={[1.7,0.3,3.05]} scale={[0.3, 0.3, 0.3]}>
+          <Operator  />
+      </group>
+
+      <group key={"adwadwa1"} position={[-0.20,-0.02,3.4]} scale={[0.13, 0.13, 0.13]}>
+          <OperatorTable rotate={"-180"}  />
+      </group> */}
     </>
   );
 };
 
-useGLTF.preload("models/floorV3.glb");
+useGLTF.preload("models/floorV4.glb");

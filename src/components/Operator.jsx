@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 
 export const Operator = (props) => {
-    const { scene } = useGLTF(`models/female2.glb`)
+    const { scene } = useGLTF(`models/test-human.glb`)
 
     return (
         <group>
@@ -11,4 +11,4 @@ export const Operator = (props) => {
 }
 
 
-useGLTF.preload("models/female2.glb");
+useGLTF.preload("models/test-human.glb");
