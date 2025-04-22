@@ -11,6 +11,7 @@ export const Operator = (props) => {
 
     const mixer = useRef();
     const clonedSceneRef = useRef();
+    const actionRef = useRef();
 
     useEffect(() => {
 
@@ -32,6 +33,10 @@ export const Operator = (props) => {
     ) || animations[0];
 
   if (clipObject) {
+
+
+    
+
     const action = mixer.current.clipAction(clipObject);
 
     action.time = Math.random() * clipObject.duration;
@@ -39,31 +44,15 @@ export const Operator = (props) => {
     action.setEffectiveTimeScale(0.9 + Math.random() * 0.2);
 
     action.setLoop(THREE.LoopRepeat, Infinity);
-    action.play();
+
+   
+    actionRef.current = action;
+    
   } else {
     console.warn("Animasi tidak ditemukan.");
   }
 
-        // if (animations.length) {
-        //     mixer.current = new THREE.AnimationMixer(clonedScene);
-        // }
-
-        // const clipObject = animations.find(
-        //     (clip) => clip.name.toLowerCase().includes("Armature|mixamo.com|Layer0")) || animations[0];
-
-        // if (clipObject) {
-        //     const action = mixer.current.clipAction(clipObject);
-        //     console.log("Animasi ditemukan.");
-        //     action.play();
-        //   } else {
-        //     console.warn("Animasi 'jalan' tidak ditemukan.");
-        //   }
-
-        // clonedScene.traverse((child) => {
-        //     if (child.isMesh) {
-        //         child.material = child.material.clone();
-        //     }
-        // })
+    
         
     },[scene, animations])
 
@@ -72,11 +61,18 @@ export const Operator = (props) => {
           });
 
 
+          useEffect(() => {
+            if (props.isRun) {
+              actionRef.current?.play();
+            }
+          }, [props.isRun]);
+
+
     if (!clonedSceneRef.current) return null;
 
     return (
         <group>
-            <primitive object={clonedSceneRef.current} rotation-x={degToRad(0)} rotation-y={degToRad(props.rotate)} />
+            <primitive object={clonedSceneRef.current} rotation-x={props.isRun ? degToRad(0) : degToRad(-90)} rotation-y={degToRad(props.rotate)} />
         </group>
     )
 }

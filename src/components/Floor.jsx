@@ -331,7 +331,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 30,
       machine_name: "MACHINE 30",
-      position: [-4, 0, 9.7],
+      position: [-3.5, 0, 9.9],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -339,7 +339,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 31,
       machine_name: "MACHINE 31",
-      position: [-4, 0, 11.3],
+      position: [-3.5, 0, 11.5],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -347,7 +347,7 @@ export const Floor = ({ selectedMode }) => {
     {
       machine_id: 32,
       machine_name: "MACHINE 32",
-      position: [-4, 0, 12.9],
+      position: [-3.5, 0, 13.1],
       rotate: "0",
       scale: [0.2, 0.2, 0.2],
       show_card: false,
@@ -377,7 +377,26 @@ export const Floor = ({ selectedMode }) => {
           })
         );
         setDataMachineIndiCator(updateData);
-        console.log("🧧", result.data.list_machine_online_indicator);
+
+
+        const updatedOperatorData = operatorData.map((operator) => {
+          // Cari data mesin yang id-nya cocok
+          const matchingMachine = result.data.list_machine_online_indicator.find((dt) => {
+            const machineId = parseInt(dt.machine_name.split(" ")[1]);
+            return machineId === operator.id;
+          });
+        
+          // Kalau ketemu, cek apakah code-nya "R"
+          return {
+            ...operator,
+            isRun: matchingMachine?.code === "R"
+          };
+        });
+        
+        // console.log("🧧", updatedOperatorData);
+        setOperatorData(updatedOperatorData);
+
+        // console.log("🧧aa", result.data.list_machine_online_indicator);
       }
     } catch (error) {
       console.log(error);
@@ -577,79 +596,79 @@ export const Floor = ({ selectedMode }) => {
     {
       conveyor_id: 22,
       conveyor_name: "CONVEYOR 22",
-      position: [13, 0, -5.8],
+      position: [13.1, 0, -5.9],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 23,
       conveyor_name: "CONVEYOR 23",
-      position: [13, 0, -4.2],
+      position: [13.1, 0, -4.3],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 24,
       conveyor_name: "CONVEYOR 24",
-      position: [13, 0, -2.6],
+      position: [13.1, 0, -2.7],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 25,
       conveyor_name: "CONVEYOR 25",
-      position: [13, 0, -1],
+      position: [13.1, 0, -1.1],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 26,
       conveyor_name: "CONVEYOR 26",
-      position: [13, 0, 0.6],
+      position: [13.1, 0, 0.5],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 27,
       conveyor_name: "CONVEYOR 27",
-      position: [13, 0, 2.2],
+      position: [13.1, 0, 2.1],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 28,
       conveyor_name: "CONVEYOR 28",
-      position: [13, 0, 3.8],
+      position: [13.1, 0, 3.7],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 29,
       conveyor_name: "CONVEYOR 29",
-      position: [13, 0, 5.4],
+      position: [13.1, 0, 5.3],
       rotate: "-180",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 30,
       conveyor_name: "CONVEYOR 30",
-      position: [-2.3, 0, 9.5],
+      position: [-2.3, 0, 9.8],
       rotate: "0",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 31,
       conveyor_name: "CONVEYOR 31",
-      position: [-2.3, 0, 11.1],
+      position: [-2.3, 0, 11.4],
       rotate: "0",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
     {
       conveyor_id: 32,
       conveyor_name: "CONVEYOR 32",
-      position: [-2.3, 0, 12.7],
+      position: [-2.3, 0, 13],
       rotate: "0",
-      scale: [0.2, 0.2, 0.2],
+      scale: [0.17, 0.17, 0.17],
     },
   ];
 
@@ -830,19 +849,19 @@ export const Floor = ({ selectedMode }) => {
     },
     {
       id: 30,
-      position: [-4.8, 0.02, 9.5],
+      position: [-4.3, 0.02, 9.7],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 31,
-      position: [-4.8, 0.02, 11.1],
+      position: [-4.3, 0.02, 11.3],
       color: "#f39c12",
       buzzer: false,
     },
     {
       id: 32,
-      position: [-4.8, 0.02, 12.7],
+      position: [-4.3, 0.02, 12.9],
       color: "#f39c12",
       buzzer: false,
     },
@@ -988,6 +1007,71 @@ export const Floor = ({ selectedMode }) => {
       rotate: 90,
       scale: [0.2, 0.2, 0.2],
     }
+    ,{
+      id: 22,
+      position: [11.6,-0.02,-9],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 23,
+      position: [11.6,-0.02,-7.4],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 24,
+      position: [11.6,-0.02,-5.8],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 25,
+      position: [11.6,-0.02,-4.2],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 26,
+      position: [11.6,-0.02,-2.6],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 27,
+      position: [11.6,-0.02,-1],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 28,
+      position: [11.6,-0.02,0.6],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 29,
+      position: [11.6,-0.02,2.2],
+      rotate: -90,
+      scale: [0.2, 0.2, 0.2],
+    },{
+      id: 30,
+      position: [-0.8,-0.02,12.9],
+      rotate: 90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 31,
+      position: [-0.8,-0.02,14.5],
+      rotate: 90,
+      scale: [0.2, 0.2, 0.2],
+    }
+    ,{
+      id: 32,
+      position: [-0.8,-0.02,16.1],
+      rotate: 90,
+      scale: [0.2, 0.2, 0.2],
+    }
   ])
 
   const [operatorData, setOperatorData] = useState([
@@ -996,126 +1080,224 @@ export const Floor = ({ selectedMode }) => {
       position: [-7.2,0,-8.2],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 2,
       position: [-7.2,0,-6.6],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 3,
       position: [-7.2,0,-5],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 4,
       position: [-7.2,0,-3.4],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 5,
       position: [-7.2,0,-1.8],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 6,
       position: [-7.2,0,-0.2],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 7,
       position: [-7.2,0,1.4],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 8,
       position: [-7.2,0,3],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 9,
       position: [-7.2,0,4.6],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 10,
       position: [-7.2,0,6.2],
       rotate: 180,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 11,
       position: [2,0,-10.7],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 12,
       position: [2,0,-9.1],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 13,
       position: [2,0,-7.5],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 14,
       position: [2,0,-5.9],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 15,
       position: [2,0,-4.3],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 16,
       position: [2,0,-2.7],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 17,
       position: [2,0,-1.1],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 18,
       position: [2,0,0.5],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 19,
       position: [2,0,2.1],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 20,
       position: [2,0,3.7],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
     },
     {
       id: 21,
       position: [2,0,5.3],
       rotate: 0,
       scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 22,
+      position: [11.9,0,-5.5],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 23,
+      position: [11.9,0,-3.9],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 24,
+      position: [11.9,0,-2.3],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 25,
+      position: [11.9,0,-0.7],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 26,
+      position: [11.9,0,0.9],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 27,
+      position: [11.9,0,2.5],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 28,
+      position: [11.9,0,4.1],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 29,
+      position: [11.9,0,5.8],
+      rotate: 180,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 30,
+      position: [-1,0,9.4],
+      rotate: 0,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 31,
+      position: [-1,0,11],
+      rotate: 0,
+      scale: [.45, .45, .45],
+      isRun: false,
+    },
+    {
+      id: 32,
+      position: [-1,0,12.6],
+      rotate: 0,
+      scale: [.45, .45, .45],
+      isRun: false,
     },
   ])
 
@@ -1186,6 +1368,16 @@ export const Floor = ({ selectedMode }) => {
     //     return [position[0]+8, position[1]+10, position[2]]
     // }
   };
+
+
+  const [technicianData, setTechnicianData] = useState([
+    {
+      id: 1,
+      position: [-5.8,-0.02,-9.8],
+      rotate: 0,
+      scale: [50, 50, 50],
+    }
+  ])
 
   return (
     <>
@@ -1324,9 +1516,19 @@ export const Floor = ({ selectedMode }) => {
 
         {operatorData.map((item) => (
             <group key={item.id} position={item.position} scale={item.scale}>
-              <Operator rotate={item.rotate} />
+              {item.isRun && (<Operator rotate={item.rotate} isRun={item.isRun} />)}
+              
             </group>
           ))}
+
+
+        {technicianData.map((item) => (
+            <group key={item.id} position={item.position} scale={item.scale}>
+              <Technician rotate={item.rotate} />
+              
+            </group>
+          ))}
+
       </group>
 
       {/* <group key={"adwadwa"} position={[1.3,0,-7.1]} scale={[.3, .3, .3]}>
@@ -1339,7 +1541,10 @@ export const Floor = ({ selectedMode }) => {
       
 
 
-      {/* <group key={"technician"} position={[-0.03,-0.02,-6.1]} scale={[35, 35, 35]}>
+      {/* <group key={"technician1"} position={[-0.03,-0.02,-6.1]} scale={[35, 35, 35]}>
+          <Technician rotate={"-180"}  />
+      </group>
+      <group key={"technician2"} position={[-0.03,-0.02,-5.8]} scale={[35, 35, 35]}>
           <Technician rotate={"-180"}  />
       </group> */}
 
